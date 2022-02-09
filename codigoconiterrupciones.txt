@@ -1,0 +1,89 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <util/delay.h>
+#include <Servo.h>
+const int Triggerdp = 3;   //Pin digital 3 para el Trigger del sensor de presencia
+const int Echodp = 2;   //Pin digital 2 para el Echo del sensor de presencia
+
+const int Triggerdn = 9;   //Pin digital 3 para el Trigger del sensor de nivel
+const int Echodn = 8;   //Pin digital 2 para el Echo del sensor de nivel
+
+const int indlleno=5;
+const int indmedio=7;	
+const int indvacio=10;
+
+const volatile int altura=70;
+int dp;
+int volatile dn;
+
+Servo tapa;
+void setup() {
+  interrupt_TIMER1_Init();
+  tapa.attach(6);
+  Serial.begin(9600);//iniciailzamos la comunicación
+  pinMode(Triggerdp, OUTPUT); //pin como salida
+  pinMode(Echodp, INPUT);  //pin como entrada
+  pinMode(Triggerdn, OUTPUT); //pin como salida
+  pinMode(Echodn, INPUT);  //pin como entrada
+  digitalWrite(Triggerdp, LOW);//Inicializamos el pin con 0
+  digitalWrite(Triggerdn, LOW);//Inicializamos el pin con 0
+  tapa.write(0);  
+  //Serial.print("Altura:");
+  //Serial.println(altura);
+}
+
+void loop()
+{
+  dp = 0.01723 * readUltrasonicDistance(Triggerdp, Echodp);
+  //Hacemos una pausa de 100ms
+  if(dp<=30){
+  tapa.write(90);  
+  //Serial.println("Tapa abierta");  
+  }else{
+  tapa.write(0);	
+  //Serial.println("Tapa cerrada");  
+  }
+}
+long readUltrasonicDistance(int triggerPin, int echoPin){
+  pinMode(triggerPin, OUTPUT);  // Clear the trigger
+  digitalWrite(triggerPin, LOW);
+  delayMicroseconds(2);
+  // Sets the trigger pin to HIGH state for 10 microseconds
+  digitalWrite(triggerPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(triggerPin, LOW);
+  pinMode(echoPin, INPUT);
+  // Reads the echo pin, and returns the sound wave travel time in microseconds
+  return pulseIn(echoPin, HIGH);
+}
+
+ISR(TIMER1_OVF_vect){
+  dn = 0.01723 * readUltrasonicDistance(Triggerdn, Echodn);
+  if(dn>altura*0.8){
+  digitalWrite(indvacio, HIGH);
+  digitalWrite(indmedio, LOW);
+  digitalWrite(indlleno, LOW);
+  //Serial.println("vacio");
+  }else if(dn<altura*0.3){
+  digitalWrite(indvacio, LOW);
+  digitalWrite(indmedio, LOW);
+  digitalWrite(indlleno, HIGH); 
+  //Serial.println("lleno");
+  }else{
+  digitalWrite(indvacio, LOW);
+  digitalWrite(indmedio, HIGH);
+  digitalWrite(indlleno, LOW);  
+  //Serial.println("medio");
+  }
+  TCNT1 = 64000;
+}
+void interrupt_TIMER1_Init(){
+ cli(); //deshabilitar momentáneamente las interrupciones
+ TCCR1B = 0b101; //preescalador 1024
+ TIMSK1 = 1; // habilitar interrupcion por desbordamiento
+ sei(); //habilitar las interrupciones
+ TCNT1 = 64000; //5s // tiempo de la interrupcion
+}

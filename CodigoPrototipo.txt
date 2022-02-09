@@ -1,0 +1,95 @@
+#include <Servo.h>
+#include <SoftwareSerial.h>
+//si se usará un módulo bluetooth real se usaría la librería anterior
+// primer dato 0-abierto 1-cerrado
+//segundo dato 0-vacio 1-medio 2-lleno
+int enviados[]={0,0}; //variables a enviar por comunicación serial 
+
+const int Triggerdp = 3;   //Pin digital 3 para el Trigger del sensor de presencia
+const int Echodp = 2;   //Pin digital 2 para el Echo del sensor de presencia
+
+const int Triggerdn = 9;   //Pin digital 3 para el Trigger del sensor de nivel
+const int Echodn = 8;   //Pin digital 2 para el Echo del sensor de nivel
+
+const int indlleno=5;
+const int indmedio=7;	
+const int indvacio=10;
+
+const int altura=70;
+int dp;
+int dn;
+
+Servo tapa;
+
+int periodo=500; //tiempo de envío de datos a la app 500ms
+unsigned long tiempoahora=0; //contador de tiempo
+
+void setup() {
+  tapa.attach(6);
+  Serial.begin(9600);//iniciailzamos la comunicación
+  pinMode(Triggerdp, OUTPUT); //pin como salida
+  pinMode(Echodp, INPUT);  //pin como entrada
+  pinMode(Triggerdn, OUTPUT); //pin como salida
+  pinMode(Echodn, INPUT);  //pin como entrada
+  digitalWrite(Triggerdp, LOW);//Inicializamos el pin con 0
+  digitalWrite(Triggerdn, LOW);//Inicializamos el pin con 0
+  tapa.write(0);  
+}
+
+void loop()
+{
+  dp = 0.01723 * readUltrasonicDistance(Triggerdp, Echodp);
+  dn = 0.01723 * readUltrasonicDistance(Triggerdn, Echodn);
+  
+  if(dn>altura*0.8){
+  digitalWrite(indvacio, HIGH);
+  digitalWrite(indmedio, LOW);
+  digitalWrite(indlleno, LOW);
+  enviados[1]=0;
+  //Serial.println("vacio");
+  }else if(dn<altura*0.3){
+  digitalWrite(indvacio, LOW);
+  digitalWrite(indmedio, LOW);
+  digitalWrite(indlleno, HIGH);
+ enviados[1]=2; 
+  //Serial.println("lleno");
+  }else{
+  digitalWrite(indvacio, LOW);
+  digitalWrite(indmedio, HIGH);
+  digitalWrite(indlleno, LOW);  
+  enviados[1]=1;
+  //Serial.println("medio");
+  }
+  //Hacemos una pausa de 100ms
+  if(dp<=30){
+  tapa.write(90);  
+  //Serial.println("Tapa abierta");  
+  enviados[0]=0;
+  delay(100);
+  }else{
+  tapa.write(0);	
+  //Serial.println("Tapa cerrada");  
+  enviados[0]=1;
+  delay(100);  
+  }
+  
+  if(millis()>tiempoahora+periodo){
+     tiempoahora=millis();
+     Serial.print(enviados[0]);
+     Serial.print(",");
+     Serial.print(enviados[1]);
+     Serial.println();
+  }
+}
+long readUltrasonicDistance(int triggerPin, int echoPin){
+  pinMode(triggerPin, OUTPUT);  // Clear the trigger
+  digitalWrite(triggerPin, LOW);
+  delayMicroseconds(2);
+  // Sets the trigger pin to HIGH state for 10 microseconds
+  digitalWrite(triggerPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(triggerPin, LOW);
+  pinMode(echoPin, INPUT);
+  // Reads the echo pin, and returns the sound wave travel time in microseconds
+  return pulseIn(echoPin, HIGH);
+}
