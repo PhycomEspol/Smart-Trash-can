@@ -1,5 +1,5 @@
 # Smart-Trash-can
-## MAGICTRONICS
+## MAGICTRONIC
 ## José García, Wilsinton Ortega, Euro Criollo :wave:
 ![Image text](https://github.com/ProjectsPhycom/Smart-Trash-can/blob/main/LOGO.png)
 ## Contexto 
