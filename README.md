@@ -34,7 +34,7 @@ Donde hay un tacho de basura puede haber un tacho de basura inteligente,puede es
 | Recurso | Descripción |
 | ------------- | ------------- |
 | Proteus y TinkerCAD  | Esquemático y simulación del prototipo |
-| MIT App Inventor  | Aplicación del prototipo  |
+| MIT App Inventor  | Aplicación móvil del prototipo  |
 | Inventor  | Modelado 3D  |
 
 [TinkerCAD](https://www.tinkercad.com/embed/dJIdihzVqo4?editbtn=1)
