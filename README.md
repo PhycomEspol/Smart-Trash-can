@@ -18,6 +18,11 @@ sensor de aproximidad va hacer que al momento que te acerques la tapa de tacho s
 que no necesitas tener contacto, asimismo contiene luces led en forma de semáforo que alerta la cantidad de
 contenido que tiene el tacho al igual puedes ver por medio de tu móvil ya que se podrá conectar por
 bluetooth.
+## Funcionalidad
+Donde hay un tacho de basura puede haber un tacho de basura inteligente a lo que me refiero que este
+puede estar en espacios educativos (escuelas , universidades) , entrentimiento (Parques, plazas comerciales),
+espacios públicos (Hospitales y centros de salud) dependiendo del tamaño es su distribución en los
+diferentes espacios.
 ## Tabla de componentes
 | Componente | Precio |
 | ------------- | ------------- |
