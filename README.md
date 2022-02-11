@@ -26,6 +26,7 @@ bluetooth.
 | Leds, Resistencias, Cables  | $2.00  |
 | Módulo bluetooth HC-05 | $5.50  |
 | Fuente de alimentación 5V 3A | $8.00 |
+| Sensor Ultrasónico Hc-sr04 x2 | $5.50 |
 ## Recursos Usados
 Proteus y TinkerCAD(Esquemático y simulación del prototipo)
 MIT App Inventor (Aplicación del prototipo)
