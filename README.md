@@ -3,8 +3,7 @@
 ## Contexto 
 La basura causa muchos problemas, cuanto mayor desarrollo económico y grado de urbanización, los
 niveles de basura en las ciudades van en aumento. Solo en Ecuador genera 375 mil toneladas de residuo
-solido al año. ¿Problemas? Cuáles Problemas? (Lo dice otra persona) sabias que tu salud está en riego.
-incluso el personal sanitario, recolectores de basura, recicladores tiene un mayor riesgo ya que están contactos
+solido al año.Sabias que tu salud está en riego.incluso el personal sanitario, recolectores de basura, recicladores tiene un mayor riesgo ya que están contactos
 con los diferentes residuos La acumulación de estos desarrollan una variedad plagas. Además, en este
 tiempo de riesgo sanitario estamos mas expuestos. Ejemplo usted como ciudadano responsable al momento de
 utilizar un basurero comun tenie la necesidas de tocar el mismo para destaparlo e incluso hay tacho que
