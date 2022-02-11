@@ -18,3 +18,11 @@ sensor de aproximidad va hacer que al momento que te acerques la tapa de tacho s
 que no necesitas tener contacto, asimismo contiene luces led en forma de semáforo que alerta la cantidad de
 contenido que tiene el tacho al igual puedes ver por medio de tu móvil ya que se podrá conectar por
 bluetooth.
+## Tabla de componentes
+| Componente | Precio |
+| ------------- | ------------- |
+| Arduino UNO  | $10.00 |
+| Servomotores Mg90 x2  | $10.00  |
+| Leds, Resistencias, Cables  | $2.00  |
+| Módulo bluetooth HC-05 | $5.50  |
+| Fuente de alimentación 5V 3A | $8.00 |
