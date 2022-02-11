@@ -1,5 +1,7 @@
 # Smart-Trash-can
+## MAGICTRONICS
 ## José García, Wilsinton Ortega, Euro Criollo :wave:
+![Image text](https://github.com/ProjectsPhycom/Smart-Trash-can/blob/main/LOGO.png)
 ## Contexto 
 La basura causa muchos problemas, cuanto mayor desarrollo económico y grado de urbanización, los
 niveles de basura en las ciudades van en aumento. Solo en Ecuador genera 375 mil toneladas de residuo
