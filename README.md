@@ -40,4 +40,4 @@ documentation on GitHub itself, or locally, using a different markup renderer.
 You want examples of link definitions and how they work? Here’s some
 Markdown for you. Instead of an absolute link:
 
-[a link](https://www.tinkercad.com/embed/dJIdihzVqo4?editbtn=1)
+[TinkerCAD](https://www.tinkercad.com/embed/dJIdihzVqo4?editbtn=1)
