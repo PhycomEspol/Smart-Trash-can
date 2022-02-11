@@ -40,4 +40,4 @@ documentation on GitHub itself, or locally, using a different markup renderer.
 You want examples of link definitions and how they work? Here’s some
 Markdown for you. Instead of an absolute link:
 
-[a link](<iframe width="725" height="453" src="https://www.tinkercad.com/embed/dJIdihzVqo4?editbtn=1" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>)
+[a link](https://github.com/user/repo/blob/branch/other_file.md)
