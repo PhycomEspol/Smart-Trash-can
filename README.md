@@ -27,6 +27,7 @@ bluetooth.
 | Módulo bluetooth HC-05 | $5.50  |
 | Fuente de alimentación 5V 3A | $8.00 |
 ## Recursos Usados
-Proteus y TinckerCAD(Esquemático y simulación del prototipo)
+Proteus y TinkerCAD(Esquemático y simulación del prototipo)
 MIT App Inventor (Aplicación del prototipo)
 Inventor (Modelado 3d)
+<iframe width="725" height="453" src="https://www.tinkercad.com/embed/dJIdihzVqo4?editbtn=1" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
